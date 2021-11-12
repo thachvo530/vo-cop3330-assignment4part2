@@ -1,27 +1,64 @@
 package ucf.assignments.vocop3330assignment4part2;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class Controller {
-
-
-    @FXML
-    private TextField listName;
+public class Controller implements Initializable {
 
     @FXML
-    private ListView<String> listOfListName;
+    private TableView<Item> table;
+
+    @FXML
+    private TableColumn<Item, String> name;
+
+    @FXML
+    private TableColumn<Item, String> description;
+
+    @FXML
+    private TableColumn<Item, String> date;
+
+    @FXML
+    private TableColumn<Item, String> status;
+
+    @FXML
+    private TextField nameInput;
+
+    @FXML
+    private TextField descriptionInput;
+
+    @FXML
+    private TextField dateInput;
+
+    @FXML
+    private TextField statusInput;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        name.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
+        description.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
+        date.setCellValueFactory(new PropertyValueFactory<Item, String>("date"));
+        status.setCellValueFactory(new PropertyValueFactory<Item, String>("status"));
+    }
 
 
     @FXML
@@ -83,13 +120,13 @@ public class Controller {
     }
 
     @FXML
-    void addItem(MouseEvent event) {
+    void addItem(ActionEvent event) {
 
-        /*
-            take in user input for item name, description, and due date
-            on mouse click of add buttom
-                creates a new item in the table
-         */
+        Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), statusInput.getText());
+        ObservableList<Item> items = table.getItems();
+        items.add(item);
+        table.setItems(items);
+
     }
 
 }

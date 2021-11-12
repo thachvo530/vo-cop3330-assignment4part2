@@ -30,23 +30,25 @@
                         </SplitPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="829.0" prefWidth="796.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="684.0" prefWidth="713.0">
                     <children>
-                        <TableView layoutY="109.0" prefHeight="412.0" prefWidth="630.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+                        <TableView fx:id="table" layoutY="109.0" prefHeight="412.0" prefWidth="630.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
                             <columns>
-                                <TableColumn prefWidth="151.0" text="Item Name" />
-                                <TableColumn prefWidth="304.0" text="Description" />
-                                <TableColumn prefWidth="102.0" text="Due Date" />
-                                <TableColumn prefWidth="72.0" text="Status" />
+                                <TableColumn fx:id="name" prefWidth="151.0" text="Item Name" />
+                                <TableColumn fx:id="description" prefWidth="309.0" text="Description" />
+                                <TableColumn fx:id="date" prefWidth="97.0" text="Due Date" />
+                                <TableColumn fx:id="status" prefWidth="72.0" text="Status" />
                             </columns>
                         </TableView>
-                        <TextField layoutX="25.0" layoutY="548.0" prefHeight="25.0" prefWidth="85.0" />
-                        <TextField layoutX="135.0" layoutY="548.0" />
-                        <TextField layoutX="315.0" layoutY="548.0" prefHeight="25.0" prefWidth="110.0" />
+                        <TextField fx:id="nameInput" layoutX="25.0" layoutY="548.0" prefHeight="25.0" prefWidth="85.0" />
+                        <TextField fx:id="descriptionInput" layoutX="135.0" layoutY="548.0" />
+                        <TextField fx:id="dateInput" layoutX="315.0" layoutY="548.0" prefHeight="25.0" prefWidth="110.0" />
                         <Label layoutX="25.0" layoutY="531.0" text="Item Name" />
                         <Label layoutX="135.0" layoutY="531.0" text="Description" />
                         <Label layoutX="315.0" layoutY="531.0" text="Date (YYYY-MM-DD)" />
-                        <Button layoutX="457.0" layoutY="548.0" mnemonicParsing="false" text="Add" />
+                        <Button layoutX="567.0" layoutY="548.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
+                  <TextField fx:id="statusInput" layoutX="458.0" layoutY="548.0" prefHeight="25.0" prefWidth="76.0" />
+                  <Label layoutX="458.0" layoutY="531.0" text="Status" />
                     </children>
                 </AnchorPane>
             </items>

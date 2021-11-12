@@ -36,8 +36,8 @@
                         <TableView fx:id="table" layoutY="109.0" prefHeight="412.0" prefWidth="630.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
                             <columns>
                                 <TableColumn fx:id="name" prefWidth="151.0" text="Item Name" />
-                                <TableColumn fx:id="description" prefWidth="309.0" text="Description" />
-                                <TableColumn fx:id="date" prefWidth="97.0" text="Due Date" />
+                                <TableColumn fx:id="description" onEditCommit="#editDescription" prefWidth="309.0" text="Description" />
+                                <TableColumn fx:id="date" onEditCommit="#editDate" prefWidth="97.0" text="Due Date" />
                                 <TableColumn fx:id="status" prefWidth="72.0" text="Status" />
                             </columns>
                         </TableView>

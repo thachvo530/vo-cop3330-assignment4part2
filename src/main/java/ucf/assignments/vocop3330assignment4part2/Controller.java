@@ -14,8 +14,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,27 +55,30 @@ public class Controller implements Initializable {
     private TextField statusInput;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle)
-    {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         name.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
         description.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
         date.setCellValueFactory(new PropertyValueFactory<Item, String>("date"));
         status.setCellValueFactory(new PropertyValueFactory<Item, String>("status"));
+
+        table.setEditable(true);
+        description.setCellFactory(TextFieldTableCell.forTableColumn());
+        date.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
 
-    @FXML
-    void saveToDo(MouseEvent event) {
+        @FXML
+        void saveToDo (MouseEvent event){
 
         /*
             on mouse click of save to do list button
                 saves current selected to do list
                 outputs csv containing items of list
          */
-    }
+        }
 
-    @FXML
-    void loadToDo(MouseEvent event) {
+        @FXML
+        void loadToDo (MouseEvent event){
 
         /*
             on mouse click of load to do list
@@ -81,59 +86,74 @@ public class Controller implements Initializable {
                 parses file
                 loads to do list into list view
          */
-    }
+        }
 
 
-    @FXML
-    void markCompleted(MouseEvent event) {
+        @FXML
+        void markCompleted (MouseEvent event){
 
         /*
             on mouse click of mark Completed button
                 sets item status as completed
          */
-    }
+        }
 
-    @FXML
-    void deleteItem(MouseEvent event) {
+        @FXML
+        void deleteItem (MouseEvent event){
 
-        int selectedID = table.getSelectionModel().getSelectedIndex();
-        table.getItems().remove(selectedID);
-    }
+            int selectedID = table.getSelectionModel().getSelectedIndex();
+            table.getItems().remove(selectedID);
+        }
 
-    @FXML
-    void deleteAll(ActionEvent event) {
+        @FXML
+        void deleteAll (ActionEvent event){
 
-        table.getItems().clear();
+            table.getItems().clear();
 
-    }
+        }
 
-    @FXML
-    void showCompleted(MouseEvent event) {
+        @FXML
+        void showCompleted (MouseEvent event){
 
         /*
             on mouse click of Show only completed button
                 filters table and displays completed items
          */
-    }
+        }
 
-    @FXML
-    void showIncomplete(MouseEvent event) {
+        @FXML
+        void showIncomplete (MouseEvent event){
 
         /*
             on mouse click of Show only incomplete
                 filters table and displays incomplete items
          */
-    }
+        }
 
-    @FXML
-    void addItem(ActionEvent event) {
+        @FXML
+        void addItem (ActionEvent event){
 
-        Item item = new Item(nameInput.getText(), descriptionInput.getText(), LocalDate.parse(dateInput.getText()), statusInput.getText());
-        ObservableList<Item> items = table.getItems();
-        items.add(item);
-        table.setItems(items);
+            Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), statusInput.getText());
+            ObservableList<Item> items = table.getItems();
+            items.add(item);
+            table.setItems(items);
 
-    }
+        }
 
+        @FXML
+        void editDescription(TableColumn.CellEditEvent<Item, String> event) {
+
+            Item item = table.getSelectionModel().getSelectedItem();
+            item.setDescription(event.getNewValue());
+
+        }
+
+        @FXML
+        void editDate(TableColumn.CellEditEvent<Item, String> event) {
+
+        Item item = table.getSelectionModel().getSelectedItem();
+        item.setDate(event.getNewValue());
+
+        }
 }
 

@@ -7,10 +7,10 @@ public class Item {
 
     private String name;
     private String description;
-    private LocalDate date;
+    private String date;
     private String status;
 
-    public Item(String name, String description, LocalDate date, String status) {
+    public Item(String name, String description, String date, String status) {
 
         this.name = name;
         this.description = description;
@@ -34,11 +34,11 @@ public class Item {
         this.description = description;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

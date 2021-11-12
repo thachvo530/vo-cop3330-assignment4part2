@@ -16,71 +16,13 @@ import java.util.Objects;
 
 public class Controller {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
-    // switches scene to view items of current list
-    public void switchToListView(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("todoListview.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    // brings user back to home menu
-    public void switchToHomeMenu(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homeMenu.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
     @FXML
     private TextField listName;
 
     @FXML
-    private ListView<String> listOfToDo;
+    private ListView<String> listOfListName;
 
-    @FXML
-    void addListName(MouseEvent event) {
-
-        /* on mouse click of add button
-            add user input for listName
-         */
-    }
-
-    @FXML
-    void viewToDo(MouseEvent event) {
-
-        /* on mouse click
-            views currently selected to do list
-         */
-
-
-    }
-
-    @FXML
-    void editToDo(MouseEvent event) {
-
-        /*
-            on mouse click of edit to do list button
-                prompts user for edit
-                changes current list name to user input
-         */
-    }
-
-    @FXML
-    void deleteToDo(MouseEvent event) {
-
-        /*
-            on mouse click of delete to do list button
-                deletes selected to do list
-         */
-    }
 
     @FXML
     void saveToDo(MouseEvent event) {
@@ -89,16 +31,6 @@ public class Controller {
             on mouse click of save to do list button
                 saves current selected to do list
                 outputs csv containing items of list
-         */
-    }
-
-    @FXML
-    void saveAll(MouseEvent event) {
-
-        /*
-             on mouse click of save all button
-                saves all current to do lists
-                outputs lists to csv file
          */
     }
 
@@ -113,16 +45,6 @@ public class Controller {
          */
     }
 
-    @FXML
-    void loadMulti(MouseEvent event) {
-
-        /*
-            on mouse click of load multiple
-                prompts user for multiple files
-                parses
-                loads files into list view
-         */
-    }
 
     @FXML
     void markCompleted(MouseEvent event) {

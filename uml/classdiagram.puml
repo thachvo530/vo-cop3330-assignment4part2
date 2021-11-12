@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Main
+{
+    + +start()
+
+}
+class Controller
+{
+    - -stage: Stage
+    - -scene: Scene
+    - -root: Parent
+    - -listName: TextField
+    - -listOfToDo: ListView<String>
+    + +switchToListView()
+    + +switchToHomeMenu()
+    + +addListName()
+    + +viewToDo()
+    + +editToDo()
+    + +deleteToDo()
+    + +saveToDo()
+    + +saveAll()
+    + +loadToDo()
+    + +loadMulti()
+    + +markCompleted()
+    + +deleteItem()
+    + +showCompleted()
+    + +showIncomplete()
+    + +addItem()
+}
+
+Main *-- Controller
+
+
+@enduml

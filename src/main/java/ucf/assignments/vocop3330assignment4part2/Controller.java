@@ -95,10 +95,8 @@ public class Controller implements Initializable {
     @FXML
     void deleteItem(MouseEvent event) {
 
-        /*
-            on mouse click of Delete button
-                deletes selected item and all of its contents
-         */
+        int selectedID = table.getSelectionModel().getSelectedIndex();
+        table.getItems().remove(selectedID);
     }
 
     @FXML

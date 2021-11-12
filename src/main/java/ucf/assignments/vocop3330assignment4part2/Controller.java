@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -100,6 +101,13 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    void deleteAll(ActionEvent event) {
+
+        table.getItems().clear();
+
+    }
+
+    @FXML
     void showCompleted(MouseEvent event) {
 
         /*
@@ -120,7 +128,7 @@ public class Controller implements Initializable {
     @FXML
     void addItem(ActionEvent event) {
 
-        Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), statusInput.getText());
+        Item item = new Item(nameInput.getText(), descriptionInput.getText(), LocalDate.parse(dateInput.getText()), statusInput.getText());
         ObservableList<Item> items = table.getItems();
         items.add(item);
         table.setItems(items);

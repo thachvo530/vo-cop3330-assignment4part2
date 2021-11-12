@@ -1,14 +1,16 @@
 package ucf.assignments.vocop3330assignment4part2;
 
 
+import java.time.LocalDate;
+
 public class Item {
 
     private String name;
     private String description;
-    private String date;
+    private LocalDate date;
     private String status;
 
-    public Item(String name, String description, String date, String status) {
+    public Item(String name, String description, LocalDate date, String status) {
 
         this.name = name;
         this.description = description;
@@ -32,11 +34,11 @@ public class Item {
         this.description = description;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

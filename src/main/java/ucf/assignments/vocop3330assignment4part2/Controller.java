@@ -2,6 +2,7 @@ package ucf.assignments.vocop3330assignment4part2;
 
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,9 +52,6 @@ public class Controller implements Initializable {
     @FXML
     private TextField dateInput;
 
-    @FXML
-    private TextField statusInput;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         name.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
@@ -64,6 +62,7 @@ public class Controller implements Initializable {
         table.setEditable(true);
         description.setCellFactory(TextFieldTableCell.forTableColumn());
         date.setCellFactory(TextFieldTableCell.forTableColumn());
+        status.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
 
@@ -90,12 +89,14 @@ public class Controller implements Initializable {
 
 
         @FXML
-        void markCompleted (MouseEvent event){
+        void markCompleted (ActionEvent event){
 
-        /*
-            on mouse click of mark Completed button
-                sets item status as completed
-         */
+        Item item = table.getSelectionModel().getSelectedItem();
+        item.setStatus("Completed");
+        table.getItems().add(table.getSelectionModel().getSelectedIndex(), item);
+        table.getItems().remove(table.getSelectionModel().getSelectedIndex() - 1);
+
+
         }
 
         @FXML
@@ -133,7 +134,7 @@ public class Controller implements Initializable {
         @FXML
         void addItem (ActionEvent event){
 
-            Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), statusInput.getText());
+            Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), "Incomplete");
             ObservableList<Item> items = table.getItems();
             items.add(item);
             table.setItems(items);

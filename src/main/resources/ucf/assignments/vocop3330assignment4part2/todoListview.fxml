@@ -20,7 +20,7 @@
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                     <children>
                                         <Button layoutX="112.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#deleteItem" text="Delete" />
-                                        <Button layoutX="85.0" layoutY="59.0" mnemonicParsing="false" text="Mark Completed" />
+                                        <Button layoutX="85.0" layoutY="59.0" mnemonicParsing="false" onAction="#markCompleted" text="Mark Completed" />
                                         <Button layoutX="73.0" layoutY="202.0" mnemonicParsing="false" text="Show only completed" />
                                         <Button layoutX="68.0" layoutY="256.0" mnemonicParsing="false" text="Show only incompleted" />
                               <Button layoutX="14.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#saveToDo" text="Save" />
@@ -47,9 +47,7 @@
                         <Label layoutX="25.0" layoutY="531.0" text="Item Name" />
                         <Label layoutX="135.0" layoutY="531.0" text="Description" />
                         <Label layoutX="315.0" layoutY="531.0" text="Date (YYYY-MM-DD)" />
-                        <Button layoutX="567.0" layoutY="548.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
-                  <TextField fx:id="statusInput" layoutX="458.0" layoutY="548.0" prefHeight="25.0" prefWidth="76.0" />
-                  <Label layoutX="458.0" layoutY="531.0" text="Status" />
+                        <Button layoutX="442.0" layoutY="548.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
                     </children>
                 </AnchorPane>
             </items>

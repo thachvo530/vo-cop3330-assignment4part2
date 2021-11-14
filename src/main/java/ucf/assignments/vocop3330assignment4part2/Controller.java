@@ -21,15 +21,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import javafx.util.converter.LocalDateStringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 import java.io.*;
+import java.lang.invoke.VarHandle;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class Controller implements Initializable {
 
@@ -59,7 +68,11 @@ public class Controller implements Initializable {
 
     public static ObservableList<Item> items = FXCollections.observableArrayList();
 
+    FileChooser fileChooser = new FileChooser();
 
+    public DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd");
+
+    @FXML
 
 
     @Override
@@ -74,26 +87,50 @@ public class Controller implements Initializable {
         description.setCellFactory(TextFieldTableCell.forTableColumn());
         date.setCellFactory(TextFieldTableCell.forTableColumn());
 
+        fileChooser.setInitialDirectory(new File("src\\main\\java\\ucf\\assignments\\vocop3330assignment4part2"));
 
 
-    }
-
-
-    @FXML
-    void saveToDo(ActionEvent event) {
 
     }
 
 
     @FXML
-    void loadToDo(MouseEvent event) {
+    void saveToDo(ActionEvent event) throws FileNotFoundException {
 
-        /*
-            on mouse click of load to do list
-                prompts user for csv file
-                parses file
-                loads to do list into list view
-         */
+        File file = fileChooser.showSaveDialog(new Stage());
+        if(file != null){
+            saveFile(file);
+
+        }
+    }
+
+    public void saveFile(File file) throws FileNotFoundException {
+
+        PrintWriter printWriter = new PrintWriter(file);
+
+        for (int i = 0; i < table.getItems().size(); i++)
+        {
+            printWriter.write(""+name.getCellData(i)+","+description.getCellData(i)+","+date.getCellData(i)+","+status.getCellData(i)+"\n");
+        }
+        printWriter.close();
+
+    }
+
+
+    @FXML
+    void loadToDo(ActionEvent event) throws IOException {
+
+        File file = fileChooser.showOpenDialog(new Stage());
+        Scanner inputStream = new Scanner(file);
+
+        while (inputStream.hasNext()) {
+            String data = inputStream.next();
+            String[] values = data.split(",");
+            Item item = new Item(values[0], values[1], values[2], values[3]);
+            items.add(item);
+        }
+
+        table.setItems(items);
     }
 
 

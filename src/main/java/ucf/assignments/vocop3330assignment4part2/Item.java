@@ -1,7 +1,10 @@
 package ucf.assignments.vocop3330assignment4part2;
 
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Item {
 
@@ -11,6 +14,9 @@ public class Item {
     private String status;
 
     public Item(String name, String description, String date, String status) {
+
+        LocalDate localDate = LocalDate.parse(date);
+        date = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         this.name = name;
         this.description = description;

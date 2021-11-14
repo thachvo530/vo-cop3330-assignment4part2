@@ -26,6 +26,8 @@
                               <Button layoutX="112.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#showCompleted" text="Show Completed" />
                               <Button layoutX="112.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#showIncomplete" text="Show Incompleted" />
                               <Button layoutX="104.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#showAll" text="Show All" />
+                              <Button layoutX="59.0" layoutY="472.0" mnemonicParsing="false" onAction="#loadToDo" text="Load" />
+                              <Button layoutX="78.0" layoutY="54.0" mnemonicParsing="false" text="Test" />
                                     </children>
                                 </AnchorPane>
                             </items>

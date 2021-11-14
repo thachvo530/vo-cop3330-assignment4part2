@@ -1,7 +1,10 @@
 package ucf.assignments.vocop3330assignment4part2;
 
 import javafx.beans.Observable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,13 +19,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -52,8 +57,14 @@ public class Controller implements Initializable {
     @FXML
     private TextField dateInput;
 
+    public static ObservableList<Item> items = FXCollections.observableArrayList();
+
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         name.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
         description.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
         date.setCellValueFactory(new PropertyValueFactory<Item, String>("date"));
@@ -62,21 +73,20 @@ public class Controller implements Initializable {
         table.setEditable(true);
         description.setCellFactory(TextFieldTableCell.forTableColumn());
         date.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+
     }
 
 
     @FXML
-    void saveToDo (MouseEvent event){
+    void saveToDo(ActionEvent event) {
 
-        /*
-            on mouse click of save to do list button
-                saves current selected to do list
-                outputs csv containing items of list
-         */
     }
 
+
     @FXML
-    void loadToDo (MouseEvent event){
+    void loadToDo(MouseEvent event) {
 
         /*
             on mouse click of load to do list
@@ -88,7 +98,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void markCompleted (ActionEvent event){
+    void markCompleted(ActionEvent event) {
 
         Item item = table.getSelectionModel().getSelectedItem();
         item.setStatus("Completed");
@@ -100,42 +110,65 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void deleteItem (MouseEvent event){
+    void deleteItem(MouseEvent event) {
 
         int selectedID = table.getSelectionModel().getSelectedIndex();
         table.getItems().remove(selectedID);
     }
 
     @FXML
-    void deleteAll (ActionEvent event){
+    void deleteAll(ActionEvent event) {
 
         table.getItems().clear();
 
     }
 
     @FXML
-    void showCompleted (MouseEvent event){
+    void showCompleted(MouseEvent event) {
 
-        /*
-            on mouse click of Show only completed button
-                filters table and displays completed items
-         */
+        ObservableList<Item> completeItems = FXCollections.observableArrayList();
+
+        for (int i = 0; i < table.getItems().size(); i++) {
+
+            if (status.getCellData(i).equals("Completed")) {
+
+                Item item = new Item(name.getCellData(i), description.getCellData(i), date.getCellData(i), status.getCellData(i));
+                completeItems.add(item);
+            }
+
+        }
+        table.setItems(completeItems);
     }
 
     @FXML
-    void showIncomplete (MouseEvent event){
+    void showIncomplete(MouseEvent event) {
 
-        /*
-            on mouse click of Show only incomplete
-                filters table and displays incomplete items
-         */
+        ObservableList<Item> incompleteItems = FXCollections.observableArrayList();
+
+        for (int i = 0; i < table.getItems().size(); i++) {
+
+            if (status.getCellData(i).equals("Incomplete")) {
+
+                Item item = new Item(name.getCellData(i), description.getCellData(i), date.getCellData(i), status.getCellData(i));
+                incompleteItems.add(item);
+            }
+
+        }
+        table.setItems(incompleteItems);
     }
 
     @FXML
-    void addItem (ActionEvent event){
+    void showAll(MouseEvent event) {
+
+            table.setItems(items);
+        }
+
+
+    @FXML
+    void addItem(ActionEvent event) {
 
         Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), "Incomplete");
-        ObservableList<Item> items = table.getItems();
+        items = table.getItems();
         items.add(item);
         table.setItems(items);
 
@@ -156,4 +189,6 @@ public class Controller implements Initializable {
         item.setDate(event.getNewValue());
 
     }
+
+
 }

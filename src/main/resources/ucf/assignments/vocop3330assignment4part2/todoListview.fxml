@@ -21,10 +21,11 @@
                                     <children>
                                         <Button layoutX="112.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#deleteItem" text="Delete" />
                                         <Button layoutX="85.0" layoutY="151.0" mnemonicParsing="false" onAction="#markCompleted" text="Mark Completed" />
-                              <Button layoutX="14.0" layoutY="472.0" mnemonicParsing="false" onMouseClicked="#saveToDo" text="Save" />
+                              <Button layoutX="14.0" layoutY="472.0" mnemonicParsing="false" onAction="#saveToDo" text="Save" />
                               <Button layoutX="104.0" layoutY="243.0" mnemonicParsing="false" onAction="#deleteAll" text="Delete All" />
-                              <TextField fx:id="filter" layoutX="14.0" layoutY="433.0" />
-                              <Label layoutX="14.0" layoutY="416.0" text="Type in text box to filter:" />
+                              <Button layoutX="112.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#showCompleted" text="Show Completed" />
+                              <Button layoutX="112.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#showIncomplete" text="Show Incompleted" />
+                              <Button layoutX="104.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#showAll" text="Show All" />
                                     </children>
                                 </AnchorPane>
                             </items>

@@ -2,55 +2,70 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="622.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.vocop3330assignment4part2.Controller">
+<AnchorPane prefHeight="944.0" prefWidth="1456.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.vocop3330assignment4part2.Controller">
     <children>
-        <SplitPane dividerPositions="0.2982261640798226" layoutX="28.0" layoutY="106.0" prefHeight="622.0" prefWidth="904.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.2982261640798226" layoutX="28.0" layoutY="106.0" prefHeight="622.0" prefWidth="1196.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <SplitPane dividerPositions="0.18541996830427893" layoutX="-5.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="633.0" prefWidth="277.0">
+                        <SplitPane layoutX="-5.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="942.0" prefWidth="431.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <items>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="131.0" prefWidth="275.0" />
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                    <children>
-                                        <Button layoutX="112.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#deleteItem" text="Delete" />
-                                        <Button layoutX="85.0" layoutY="151.0" mnemonicParsing="false" onAction="#markCompleted" text="Mark Completed" />
-                              <Button layoutX="14.0" layoutY="472.0" mnemonicParsing="false" onAction="#saveToDo" text="Save" />
-                              <Button layoutX="104.0" layoutY="243.0" mnemonicParsing="false" onAction="#deleteAll" text="Delete All" />
-                              <Button layoutX="112.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#showCompleted" text="Show Completed" />
-                              <Button layoutX="112.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#showIncomplete" text="Show Incompleted" />
-                              <Button layoutX="104.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#showAll" text="Show All" />
-                              <Button layoutX="59.0" layoutY="472.0" mnemonicParsing="false" onAction="#loadToDo" text="Load" />
-                              <Button layoutX="78.0" layoutY="54.0" mnemonicParsing="false" text="Test" />
-                                    </children>
-                                </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="723.0" prefWidth="363.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="-21.0" prefHeight="158.0" prefWidth="378.0" text="Welcome to your To Do List!">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Label>
+                                      <AnchorPane layoutX="-72.0" layoutY="196.0" minHeight="0.0" minWidth="0.0" prefHeight="728.0" prefWidth="438.0" AnchorPane.bottomAnchor="-293.0" AnchorPane.leftAnchor="-72.0" AnchorPane.rightAnchor="-91.0" AnchorPane.topAnchor="196.0">
+                                          <children>
+                                              <Button layoutX="218.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#deleteItem" prefHeight="49.0" prefWidth="99.0" text="Delete" />
+                                              <Button layoutX="184.0" mnemonicParsing="false" onAction="#markCompleted" prefHeight="49.0" prefWidth="167.0" text="Mark Completed" />
+                                    <Button layoutX="81.0" layoutY="686.0" mnemonicParsing="false" onAction="#saveToDo" prefHeight="38.0" prefWidth="62.0" text="Save" />
+                                    <Button layoutX="218.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteAll" prefHeight="49.0" prefWidth="99.0" text="Delete All" />
+                                    <Button layoutX="184.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#showIncomplete" prefHeight="49.0" prefWidth="167.0" text="Show Incompleted" />
+                                    <Button layoutX="218.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#showAll" prefHeight="49.0" prefWidth="99.0" text="Show All" />
+                                    <Button layoutX="163.0" layoutY="686.0" mnemonicParsing="false" onAction="#loadToDo" prefHeight="38.0" prefWidth="68.0" text="Load" />
+                                    <Button layoutX="196.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#showCompleted" prefHeight="49.0" prefWidth="143.0" text="Show Completed" />
+                                    <Button layoutX="184.0" layoutY="64.0" mnemonicParsing="false" onAction="#markIncomplete" prefHeight="49.0" prefWidth="167.0" text="Mark Incomplete " />
+                                          </children>
+                                      </AnchorPane>
+                              <Separator layoutY="101.0" prefHeight="25.0" prefWidth="429.0" />
+                           </children></AnchorPane>
                             </items>
                         </SplitPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="684.0" prefWidth="713.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="831.0" prefWidth="793.0">
                     <children>
-                        <TableView fx:id="table" layoutY="109.0" prefHeight="412.0" prefWidth="630.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+                        <TableView fx:id="table" layoutY="104.0" prefHeight="412.0" prefWidth="630.0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
                             <columns>
-                                <TableColumn fx:id="name" prefWidth="151.0" text="Item Name" />
-                                <TableColumn fx:id="description" onEditCommit="#editDescription" prefWidth="309.0" text="Description" />
-                                <TableColumn fx:id="date" onEditCommit="#editDate" prefWidth="97.0" text="Due Date" />
-                                <TableColumn fx:id="status" prefWidth="72.0" text="Status" />
+                                <TableColumn fx:id="name" prefWidth="203.0" text="Item Name" />
+                                <TableColumn fx:id="description" onEditCommit="#editDescription" prefWidth="582.0" text="Description" />
+                                <TableColumn fx:id="date" minWidth="0.0" onEditCommit="#editDate" prefWidth="96.0" text="Due Date" />
+                                <TableColumn fx:id="status" prefWidth="135.0" text="Status" />
                             </columns>
                         </TableView>
-                        <TextField fx:id="nameInput" layoutX="25.0" layoutY="548.0" prefHeight="25.0" prefWidth="85.0" />
-                        <TextField fx:id="descriptionInput" layoutX="135.0" layoutY="548.0" />
-                        <TextField fx:id="dateInput" layoutX="315.0" layoutY="548.0" prefHeight="25.0" prefWidth="110.0" />
-                        <Label layoutX="25.0" layoutY="531.0" text="Item Name" />
-                        <Label layoutX="135.0" layoutY="531.0" text="Description" />
-                        <Label layoutX="315.0" layoutY="531.0" text="Date (YYYY-MM-DD)" />
-                        <Button layoutX="442.0" layoutY="548.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
+                        <TextField fx:id="nameInput" layoutX="28.0" layoutY="879.0" prefHeight="32.0" prefWidth="143.0" />
+                        <TextField fx:id="descriptionInput" layoutX="213.0" layoutY="879.0" prefHeight="32.0" prefWidth="294.0" />
+                        <TextField fx:id="dateInput" layoutX="543.0" layoutY="879.0" prefHeight="32.0" prefWidth="199.0" />
+                        <Label layoutX="28.0" layoutY="852.0" text="Item Name" />
+                        <Label layoutX="213.0" layoutY="852.0" text="Description" />
+                        <Label layoutX="543.0" layoutY="852.0" text="Date (YYYY-MM-DD)" />
+                        <Button layoutX="768.0" layoutY="871.0" mnemonicParsing="false" onAction="#addItem" prefHeight="49.0" prefWidth="78.0" text="Add" />
+                  <Label alignment="TOP_CENTER" layoutX="177.0" prefHeight="104.0" prefWidth="630.0" text="To Do List">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="80.0" />
+                     </font>
+                  </Label>
                     </children>
                 </AnchorPane>
             </items>

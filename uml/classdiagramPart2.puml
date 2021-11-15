@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Class Main
+{
+    + +start()
+
+}
+
+Class Item
+{
+    - -name: String
+    - -description: String
+    - -date: String
+    - -status: String
+
+    + +Item()
+    + +getName() : String
+    + +setName()
+    + +getDescription() : String
+    + +setDescription()
+    + +getDate() : String
+    + +setDate()
+    + +getStatus() : String
+    + +setStatus()
+}
+
+Class Controller
+{
+    - -table: TableView<Item>
+    - -name: TableColumn<Item, String>
+    - -description: TableColumn<Item, String>
+    - -date: TableColumn<Item, String>
+    - -status: TableColumn<Item, String>
+    - -nameInput: TextField
+    - -descriptionInput: TextField
+    - -dateInput: TextField
+    + +item: ObservableItem<Item>
+    + +fileChooser: FileChooser
+
+    + +initialize() : void
+    + +savetoDo() : void
+    + +saveFile() : void
+    + +loadToDo() : void
+    + +markCompleted() : void
+    + +deleteItem() : void
+    + +deleteAll() : void
+    + +showCompleted() : void
+    + +showIncomplete() : void
+    + +showAll() : void
+    + +helperShowAll() : TableView<Item>
+    + +addItem() : void
+    + +helperAddItem() : Item
+    + +editDescription() : void
+    + +editStatus() : void
+}
+
+Controller <-- Item
+Main <-- Controller
+@enduml

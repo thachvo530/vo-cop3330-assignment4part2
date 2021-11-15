@@ -1,3 +1,9 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 Vo Thach
+ */
+
+
 package ucf.assignments.vocop3330assignment4part2;
 
 import javafx.beans.Observable;
@@ -68,7 +74,7 @@ public class Controller implements Initializable {
 
     public static ObservableList<Item> items = FXCollections.observableArrayList();
 
-    FileChooser fileChooser = new FileChooser();
+    public FileChooser fileChooser = new FileChooser();
 
     @FXML
 
@@ -93,7 +99,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void saveToDo(ActionEvent event) throws FileNotFoundException {
+    public void saveToDo(ActionEvent event) throws FileNotFoundException {
 
         File file = fileChooser.showSaveDialog(new Stage());
         if(file != null){
@@ -116,7 +122,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void loadToDo(ActionEvent event) throws IOException {
+    public void loadToDo(ActionEvent event) throws IOException {
 
         File file = fileChooser.showOpenDialog(new Stage());
         Scanner inputStream = new Scanner(file);
@@ -133,7 +139,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void markCompleted(ActionEvent event) {
+    public void markCompleted(ActionEvent event) {
 
         Item item = table.getSelectionModel().getSelectedItem();
         item.setStatus("Completed");
@@ -141,25 +147,34 @@ public class Controller implements Initializable {
         table.getItems().remove(table.getSelectionModel().getSelectedIndex() - 1);
         table.refresh();
 
-
     }
 
     @FXML
-    void deleteItem(MouseEvent event) {
+    public void markIncomplete(ActionEvent event) {
+
+        Item item = table.getSelectionModel().getSelectedItem();
+        item.setStatus("Incomplete");
+        table.getItems().add(table.getSelectionModel().getSelectedIndex(), item);
+        table.getItems().remove(table.getSelectionModel().getSelectedIndex() - 1);
+        table.refresh();
+    }
+
+    @FXML
+    public void deleteItem(MouseEvent event) {
 
         int selectedID = table.getSelectionModel().getSelectedIndex();
         table.getItems().remove(selectedID);
     }
 
     @FXML
-    void deleteAll(ActionEvent event) {
+    public void deleteAll(ActionEvent event) {
 
         table.getItems().clear();
 
     }
 
     @FXML
-    void showCompleted(MouseEvent event) {
+    public void showCompleted(MouseEvent event) {
 
         ObservableList<Item> completeItems = FXCollections.observableArrayList();
 
@@ -176,7 +191,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void showIncomplete(MouseEvent event) {
+    public void showIncomplete(MouseEvent event) {
 
         ObservableList<Item> incompleteItems = FXCollections.observableArrayList();
 
@@ -193,7 +208,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void showAll(MouseEvent event) {
+    public void showAll(MouseEvent event) {
 
             table = helperShowAll();
         }
@@ -208,7 +223,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void addItem(ActionEvent event) {
+    public void addItem(ActionEvent event) {
 
         Item item = helperAddItem();
         items = table.getItems();
@@ -217,14 +232,14 @@ public class Controller implements Initializable {
 
     }
 
-        public Item helperAddItem(){
+    public Item helperAddItem(){
 
-            return new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), "Incomplete");
+        return new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), "Incomplete");
 
-        }
+    }
 
     @FXML
-    void editDescription(TableColumn.CellEditEvent<Item, String> event) {
+    public void editDescription(TableColumn.CellEditEvent<Item, String> event) {
 
         Item item = table.getSelectionModel().getSelectedItem();
         item.setDescription(event.getNewValue());
@@ -232,7 +247,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void editDate(TableColumn.CellEditEvent<Item, String> event) {
+    public void editDate(TableColumn.CellEditEvent<Item, String> event) {
 
         Item item = table.getSelectionModel().getSelectedItem();
         item.setDate(event.getNewValue());

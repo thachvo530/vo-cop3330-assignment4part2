@@ -24,6 +24,7 @@ class Controller
     + +loadToDo()
     + +loadMulti()
     + +markCompleted()
+    + +markIncomplete()
     + +deleteItem()
     + +showCompleted()
     + +showIncomplete()

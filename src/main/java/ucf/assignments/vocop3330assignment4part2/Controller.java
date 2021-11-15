@@ -70,8 +70,6 @@ public class Controller implements Initializable {
 
     FileChooser fileChooser = new FileChooser();
 
-    public DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd");
-
     @FXML
 
 
@@ -197,19 +195,33 @@ public class Controller implements Initializable {
     @FXML
     void showAll(MouseEvent event) {
 
+            table = helperShowAll();
+        }
+
+
+        public TableView<Item> helperShowAll(){
+
             table.setItems(items);
+
+            return table;
         }
 
 
     @FXML
     void addItem(ActionEvent event) {
 
-        Item item = new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), "Incomplete");
+        Item item = helperAddItem();
         items = table.getItems();
         items.add(item);
         table.setItems(items);
 
     }
+
+        public Item helperAddItem(){
+
+            return new Item(nameInput.getText(), descriptionInput.getText(), dateInput.getText(), "Incomplete");
+
+        }
 
     @FXML
     void editDescription(TableColumn.CellEditEvent<Item, String> event) {
